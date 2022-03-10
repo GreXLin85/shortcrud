@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.17.0"
+  },
+  "name": "shortcrud",
+  "version": "1.0.0",
+  "description": "Shortcut for creating express CRUD's with sequelize",
+  "main": "src/index.js",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GreXLin85/shortcrud.git"
+  },
+  "keywords": [
+    "shortcrud",
+    "express",
+    "sequelize"
+  ],
+  "author": "GreXLin85",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GreXLin85/shortcrud/issues"
+  },
+  "homepage": "https://github.com/GreXLin85/shortcrud#readme"
+}
