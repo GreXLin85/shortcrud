@@ -2,34 +2,30 @@ const { Router } = require("express");
 
 class ShortCrud {
   constructor({
-    crudName,
     modelObject,
-    options: {
-      hooks: {
-        beforeList,
-        beforeGet,
-        beforeCreate,
-        beforeUpdate,
-        beforeDelete,
-        afterList,
-        afterGet,
-        afterCreate,
-        afterUpdate,
-        afterDelete,
-      },
+    hooks = {
+      beforeList,
+      beforeGet,
+      beforeCreate,
+      beforeUpdate,
+      beforeDelete,
+      afterList,
+      afterGet,
+      afterCreate,
+      afterUpdate,
+      afterDelete,
     },
   }) {
     this.modelObject = modelObject;
     this.router = Router();
-    this.crudName = crudName;
-    this.hooks = options.hooks;
+    this.hooks = hooks;
     Object.keys(this.hooks).forEach((key) => {
       if (!this.hooks[key]) {
         this.hooks[key] = (req, res, next) => next();
       }
     });
   }
-  async init() {
+  init() {
     this.router.get(
       "/",
       this.hooks.beforeList,
@@ -124,6 +120,8 @@ class ShortCrud {
       },
       this.hooks.afterDelete
     );
+
+    return this.router;
   }
   Message(res, { status, message, data, extra }) {
     return res.status(status).json({
@@ -134,4 +132,4 @@ class ShortCrud {
   }
 }
 
-module.export = ShortCrud;
+module.exports = ShortCrud;
